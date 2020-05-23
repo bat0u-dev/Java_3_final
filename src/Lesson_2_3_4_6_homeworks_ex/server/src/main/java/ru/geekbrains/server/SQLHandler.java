@@ -1,8 +1,14 @@
+package ru.geekbrains.server;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 
 public class SQLHandler {
     private static Connection connection;
     private static Statement stmt;
+    private static final Logger logger = LogManager.getLogger(SQLHandler.class);
 
     public static void connect() {
         try {
@@ -11,6 +17,7 @@ public class SQLHandler {
                     "\\Java_3_homework's\\Java_3_final\\src\\Lesson_2_3_4_6_homeworks_ex\\server\\Database.db");
             stmt = connection.createStatement();
         }catch (Exception e){
+            logger.error("возникло исключение Exception");
             e.printStackTrace();
         }
     }
@@ -23,6 +30,7 @@ public class SQLHandler {
          return rs.getString(1);
         }
         } catch (SQLException e) {
+            logger.error("возникло исключение SQLException");
             e.printStackTrace();
         }
         return null;
@@ -34,6 +42,7 @@ public class SQLHandler {
          return stmt.executeUpdate("UPDATE users SET nickname = '"
                     + newNick + "' WHERE nickname ='" + oldNick+"'");
         } catch (SQLException e) {
+            logger.error("возникло исключение SQLException");
             e.printStackTrace();
             return 0;
         }
@@ -43,6 +52,7 @@ public class SQLHandler {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error("возникло исключение SQLException");
             e.printStackTrace();
         }
     }

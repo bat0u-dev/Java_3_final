@@ -1,3 +1,5 @@
+package ru.geekbrains.client;
+
 import java.io.*;
 
 public class HistoryLog {
