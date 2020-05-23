@@ -29,10 +29,10 @@ public class JChatServer {
             SQLHandler.connect();
 
             while (true) {
-                logger.info("сервер запущен.");
+                logger.info("сервер запущен");
                 System.out.println("Waiting for client's to connect...");
                 Socket socket = serverSocket.accept();
-                logger.info("клитент подкючился ");
+                logger.info("клитент подкючился");
                 ClientHandler processedClient = new ClientHandler(this,socket,clientCounter);
                 System.out.println("Client " + clientCounter + " has been connected...");
                 clientCounter++;
