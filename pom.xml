@@ -8,5 +8,20 @@
 <artifactId>Java_3_final</artifactId>
 <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.16.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.cedarsoft.dependencies-sets/openjfx -->
+        <dependency>
+            <groupId>com.cedarsoft.dependencies-sets</groupId>
+            <artifactId>openjfx</artifactId>
+            <version>8.9.0</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 
 </project>
