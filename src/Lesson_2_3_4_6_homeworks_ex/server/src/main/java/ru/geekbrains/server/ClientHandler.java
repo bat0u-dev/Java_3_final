@@ -72,25 +72,25 @@ public class ClientHandler {
                             server.broadcastMessage(ClientHandler.this.nickname + " : " + inputMsg);
                         }
                     } catch (IOException e) {
-                        logger.error("возникло исключение IOException");
+                        logger.error(e.getMessage(), e);
                         e.printStackTrace();
                     } finally {
                         try {
                             Input.close();
                         } catch (IOException e) {
-                            logger.error("возникло исключение IOException");
+                            logger.error(e.getMessage(), e);
                             e.printStackTrace();
                         }
                         try {
                             Output.close();
                         } catch (IOException e) {
-                            logger.error("возникло исключение IOException");
+                            logger.error(e.getMessage(), e);
                             e.printStackTrace();
                         }
                         try {
                             clientSocket.close();
                         } catch (IOException e) {
-                            logger.error("возникло исключение IOException");
+                            logger.error(e.getMessage(), e);
                             e.printStackTrace();
                         }
                         server.unsubscribe(ClientHandler.this);
@@ -98,7 +98,7 @@ public class ClientHandler {
                 }
             });
         } catch (IOException e) {
-            logger.error("возникло исключение IOException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }
@@ -107,7 +107,7 @@ public class ClientHandler {
         try {
             Output.writeUTF(inputMsg);
         } catch (IOException e) {
-            logger.error("возникло исключение IOException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }

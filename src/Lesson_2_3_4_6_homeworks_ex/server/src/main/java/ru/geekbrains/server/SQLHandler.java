@@ -17,7 +17,7 @@ public class SQLHandler {
                     "\\Java_3_homework's\\Java_3_final\\src\\Lesson_2_3_4_6_homeworks_ex\\server\\Database.db");
             stmt = connection.createStatement();
         }catch (Exception e){
-            logger.error("возникло исключение Exception");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }
@@ -30,7 +30,7 @@ public class SQLHandler {
          return rs.getString(1);
         }
         } catch (SQLException e) {
-            logger.error("возникло исключение SQLException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
         return null;
@@ -42,7 +42,7 @@ public class SQLHandler {
          return stmt.executeUpdate("UPDATE users SET nickname = '"
                     + newNick + "' WHERE nickname ='" + oldNick+"'");
         } catch (SQLException e) {
-            logger.error("возникло исключение SQLException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
             return 0;
         }
@@ -52,7 +52,7 @@ public class SQLHandler {
         try {
             connection.close();
         } catch (SQLException e) {
-            logger.error("возникло исключение SQLException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }

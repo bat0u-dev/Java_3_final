@@ -38,7 +38,7 @@ public class JChatServer {
                 clientCounter++;
             }
         } catch (IOException e) {
-            logger.error("возникло исключение IOException");
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         } finally {
             SQLHandler.disconnect();
