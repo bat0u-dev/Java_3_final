@@ -35,11 +35,13 @@ public class ClientHandler {
                             String inputMsg = Input.readUTF();
                             String[] tokens = inputMsg.split("\\s");
                             if (tokens[0].equals("/auth")) {
+                                logger.debug("попытка авторизации");
                                 String nickFromDB = SQLHandler.getNickByLoginAnPassword(tokens[1], tokens[2]);
                                 if (nickFromDB != null) {
                                     ClientHandler.this.sendMsg("/authOk");
                                     server.subscribe(ClientHandler.this);
                                     nickname = nickFromDB;
+                                    logger.debug("авторизация " + nickname + " прошла успешно");
                                     Output.writeUTF("Authorization successful.");
                                     break;
                                 }

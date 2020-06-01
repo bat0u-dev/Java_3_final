@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
     <Properties>
-        <Property name="basePath">src/Lesson_2_3_4_6_homeworks_ex/server/logs</Property>
+        <Property name="basePath">src/Lesson_2_3_4_6_homeworks_ex/server/logs/</Property>
     </Properties>
     <Appenders>
         <File name="FILE" fileName="${basePath}/logfile.log" append="true">
@@ -12,10 +12,11 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="ru.geekbrains.server" level="info" />
-        <Root level="info">
-            <AppenderRef ref="STDOUT" />
+        <Logger name="ru.geekbrains.server" level="debug" >
             <AppenderRef ref="FILE" />
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="STDOUT" />
         </Root>
     </Loggers>
 </Configuration>

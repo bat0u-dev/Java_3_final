@@ -27,14 +27,13 @@ public class JChatServer {
             ServerSocket serverSocket = new ServerSocket(8189);
             clientsList = new Vector<>();
             SQLHandler.connect();
+            logger.info("сервер запущен");
 
             while (true) {
-                logger.info("сервер запущен");
                 System.out.println("Waiting for client's to connect...");
                 Socket socket = serverSocket.accept();
                 logger.info("клитент подкючился");
                 ClientHandler processedClient = new ClientHandler(this,socket,clientCounter);
-                System.out.println("Client " + clientCounter + " has been connected...");
                 clientCounter++;
             }
         } catch (IOException e) {
@@ -42,6 +41,7 @@ public class JChatServer {
             e.printStackTrace();
         } finally {
             SQLHandler.disconnect();
+            logger.debug("отключение от базы данных");
         }
     }
 

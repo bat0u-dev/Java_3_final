@@ -15,6 +15,7 @@ public class SQLHandler {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\User\\JavaDev\\JavaUniversity" +
                     "\\Java_3_homework's\\Java_3_final\\src\\Lesson_2_3_4_6_homeworks_ex\\server\\Database.db");
+            logger.debug("подключение к базе данных");
             stmt = connection.createStatement();
         }catch (Exception e){
             logger.error(e.getMessage(), e);
