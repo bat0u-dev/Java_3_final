@@ -1,16 +1,24 @@
+package ru.geekbrains.server;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 
 public class SQLHandler {
     private static Connection connection;
     private static Statement stmt;
+    private static final Logger logger = LogManager.getLogger(SQLHandler.class);
 
     public static void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\User\\JavaDev\\JavaUniversity" +
                     "\\Java_3_homework's\\Java_3_final\\src\\Lesson_2_3_4_6_homeworks_ex\\server\\Database.db");
+            logger.debug("подключение к базе данных");
             stmt = connection.createStatement();
         }catch (Exception e){
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }
@@ -23,6 +31,7 @@ public class SQLHandler {
          return rs.getString(1);
         }
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
         return null;
@@ -34,6 +43,7 @@ public class SQLHandler {
          return stmt.executeUpdate("UPDATE users SET nickname = '"
                     + newNick + "' WHERE nickname ='" + oldNick+"'");
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
             return 0;
         }
@@ -43,6 +53,7 @@ public class SQLHandler {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }

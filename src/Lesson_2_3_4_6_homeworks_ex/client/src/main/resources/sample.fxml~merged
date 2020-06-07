@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 >>>>>>> Stashed changes
 <?import javafx.scene.control.PasswordField?>
-<VBox fx:id="mainBox" fx:controller="Controller"
+<VBox fx:id="mainBox" fx:controller="ru.geekbrains.client.Controller"
       xmlns:fx="http://javafx.com/fxml" alignment="center">
     <HBox fx:id="authPanel">
         <TextField fx:id="loginField" promptText="login" HBox.hgrow="ALWAYS"/>
